@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Jobs\MailSend;
 use Illuminate\Console\Command;
 
 class DailyMail extends Command
@@ -25,6 +26,6 @@ class DailyMail extends Command
      */
     public function handle()
     {
-        $schedules = ReceivingSchedule::
+        MailSend::dispatch();
     }
 }
