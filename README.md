@@ -3,7 +3,7 @@
 This repository contains a blade CRUD System built with Laravel, with daily reports.
 
 ## Installation
-- git clone https://github.com/FaezaAldarweesh/task_7.git
+- git clone https://github.com/FaezaAldarweesh/task_8.git
 - composer install
 - cp .env.example .env
 - php artisan key:generate
