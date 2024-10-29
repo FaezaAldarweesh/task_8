@@ -25,9 +25,6 @@
                             <i class="bi bi-trash me-1"></i> Trashed Tasks
                         </a>
 
-                        <a href="{{ route('TaskPending') }}" class="btn btn-danger">
-                            <i class="bi bi-trash me-1"></i>Pending Tasks
-                        </a>
                     </div>
                 </div>
             </div>

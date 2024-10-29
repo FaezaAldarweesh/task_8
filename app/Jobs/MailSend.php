@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Models\User;
 use App\Mail\SendMail;
 use Illuminate\Bus\Queueable;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -32,6 +33,7 @@ class MailSend implements ShouldQueue
         $user_emails = User::pluck('email');
 
         foreach($user_emails as $user_email){
+
             Mail::to($user_email)->send(new SendMail($this->TaskPending));
         }
     }
