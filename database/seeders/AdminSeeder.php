@@ -23,11 +23,5 @@ class AdminSeeder extends Seeder
             'password' => '11223344',
         ]);
 
-        $user = User::create([
-            'name' => 'faeza',
-            'email' => 'faeza@gmail.com',
-            'password' => 'faeza_95514',
-        ]);
-
     }
 }

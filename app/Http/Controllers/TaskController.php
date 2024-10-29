@@ -17,6 +17,7 @@ class TaskController extends Controller
      */
     public function __construct(TaskService $taskservices)
     {
+        $this->middleware('auth');
         $this->taskservices = $taskservices;
     }
     //===========================================================================================================================
@@ -123,7 +124,7 @@ class TaskController extends Controller
      */
     public function restore($task_id)
     {
-        $delete = $this->taskservices->restore_task($task_id);
+        $restore = $this->taskservices->restore_task($task_id);
         session()->flash('success', 'restore task Successfully');
         return redirect()->route('all_trashed_task');
     }
@@ -138,6 +139,17 @@ class TaskController extends Controller
         $delete = $this->taskservices->forceDelete_task($task_id);
         session()->flash('success', 'force Delete task Successfully');
         return redirect()->route('all_trashed_task');
+    }
+    //========================================================================================================================
+        /**
+     * method to 
+     * @return /Illuminate\Http\JsonResponse
+     */
+    public function Task_Pending()
+    {
+        $Task_Pending = $this->taskservices->Task_Pending();
+        session()->flash('success', 'send pending task Successfully');
+        return redirect()->route('home');
     }
     //========================================================================================================================
 }

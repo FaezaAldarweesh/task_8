@@ -24,9 +24,11 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('task', controller: TaskController::class);
-
 Route::patch('update_status/{task_id}/', [TaskController::class,'update_status'])->name('update_status');
+
 Route::get('all_trashed_task', [TaskController::class,'all_trashed_tasks'])->name('all_trashed_task');
 Route::post('task_restore/{task_id}/', [TaskController::class,'restore'])->name('task.restore');
 Route::delete('task_forceDelete/{task_id}/', [TaskController::class,'forceDelete'])->name('task.forceDelete');
+
+Route::get('TaskPending',[TaskController::class , 'Task_Pending'])->name('TaskPending');
 

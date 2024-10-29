@@ -3,7 +3,11 @@
 namespace App\Services;
 
 use App\Models\Task;
+use App\Models\User;
+use App\Jobs\MailSend;
+use App\Mail\SendMail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Cache;
 
 class TaskService {
@@ -182,9 +186,23 @@ class TaskService {
             return true;
             
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Failed to forc eDelete this task: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Failed to force Delete this task: ' . $e->getMessage());
         }
     }
 //========================================================================================================================
+    public function Task_Pending()
+    {   
+        try {
 
+            //create service
+            $TaskPending = Task::select('title')->where('status' , '=' , 'Pending')->get();
+
+            MailSend::dispatch($TaskPending);
+            
+            return true;
+            
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to send report: ' . $e->getMessage());
+        }
+    }
 }
